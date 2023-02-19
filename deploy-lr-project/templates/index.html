@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../static/index.css" />
+        <title>Stroke Prediction</title>        
+    </head>
+
+    <body>
+        <div id="content1">
+            <div class="heading">
+                <h3 id="head">Stroke Prediction</h3>
+            </div>
+            <form action="{{url_for('prediction')}}" method="post">
+                <div id="content1">
+                    <div class="select_">
+                    <label for="sex">Gender:</label><br><br>
+                    <select name="sex" required="required" class="select">
+                        <option disabled selected value>--Select your gender!--</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                    </select><br><br>
+                    </div>
+
+                    <label class="label">Age:</label> <br><br>
+                    <input type="age" name="age" placeholder="Enter your age!" class="box"> <br><br>
+
+                    <label>Hypertension:</label><br><br>
+                    <select name="hypertension" required="required" class="select">
+                        <option disabled selected value>--Select--</option>
+                        <option value="1">I have hypertension.</option>
+                        <option value="0">I haven't hypertension.</option>
+                    </select><br><br>
+
+                    <label>Do you have any heart disease?</label><br><br>
+                    <select name="heart_disease" required="required" class="select">
+                        <option disabled selected value>--Select--</option>
+                        <option value="1">I have heart disease.</option>
+                        <option value="0">I haven't heart disease.</option>
+                    </select><br><br>
+
+                    <label>Have you ever been married?</label><br><br>
+                    <select name="marriage" required="required" class="select">
+                        <option disabled selected value>--Select--</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select><br><br>
+
+                    <label>Which is your work type?</label><br><br>
+                    <select name="work" required="required" class="select">
+                        <option disabled selected value>--Select--</option>
+                        <option value="1">Self employed</option>
+                        <option value="2">Government job</option>
+                        <option value="3">Not working</option>
+                        <option value="4">Children</option>
+                    </select><br><br>
+
+                    <label>Where you live?</label><br><br>
+                    <select name="live" required="required" class="select">
+                        <option disabled selected value>--Select--</option>
+                        <option value="0">Rural area</option>
+                        <option value="1">Urban area</option>
+                    </select><br><br>
+
+                    <label>Your average level of glucose in blood:</label><br><br>
+                    <input type="avg_glucose" name="avg_glucose" placeholder="Level of glucose!" class="box"> <br><br>
+
+                    <label>BMI:</label><br><br>
+                    <input type="bmi" name="bmi" placeholder="Enter BMI!" class="box"> <br><br>
+
+                    <label>Smoking status:</label><br><br>
+                    <select name="smoking" required="required" class="select">
+                        <option disabled selected value>--Select--</option>
+                        <option value="0">Never smoke</option>
+                        <option value="1">Smoking</option>
+                    </select><br><br>
+                    
+                    <div id="submit-wrapper">
+                        <button class="submit-btn">Submit</button>
+                        <div id="message">{{prediction_text}}</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+    <script>
+        if (
+          document.getElementById("message").innerHTML ==
+          "The possibility of a stroke is low."
+        )
+          document.getElementById("message").style.background = "green";
+        else if (
+          document.getElementById("message").innerHTML ==
+          "The possibility of a stroke is high."
+        )
+          document.getElementById("message").style.background = "red";
+      </script>
+</html>
